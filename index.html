@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Video A/B Test - Cloudinary Native</title>
+
+    <!-- Cloudinary Video Player CSS -->
+    <link
+      href="https://unpkg.com/cloudinary-video-player@1.10.6/dist/cld-video-player.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🎯 Interactive Video A/B Test</h1>
+        <p>
+          Compare conversion rates between standard videos vs interactive videos
+          with Cloudinary's native hotspots. Interactive videos show 30%+ higher
+          conversion rates according to research.
+        </p>
+      </div>
+
+      <!-- Global Metrics -->
+      <div class="global-metrics">
+        <h2>Test Results</h2>
+        <div class="metrics-grid">
+          <div class="global-metric">
+            <span class="global-metric-value" id="conversion-lift">+0%</span>
+            <span class="global-metric-label">Conversion Lift</span>
+          </div>
+          <div class="global-metric">
+            <span class="global-metric-value" id="revenue-boost">+$0</span>
+            <span class="global-metric-label">Revenue Boost</span>
+          </div>
+          <div class="global-metric">
+            <span class="global-metric-value" id="interaction-rate">0%</span>
+            <span class="global-metric-label">Interaction Rate</span>
+          </div>
+          <div class="global-metric">
+            <span class="global-metric-value" id="total-tests">0</span>
+            <span class="global-metric-label">Total Views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn" onclick="simulateViews()">
+          📈 Simulate 200 Views
+        </button>
+        <button class="btn" onclick="resetTest()">🔄 Reset Data</button>
+      </div>
+
+      <!-- A/B Test Grid -->
+      <div class="test-grid">
+        <!-- Control Video -->
+        <div class="test-section">
+          <h2>🎬 Standard video without interactive elements</h2>
+          <div class="video-container">
+            <video
+              id="control-video"
+              controls
+              muted
+              class="cld-video-player"
+            ></video>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-value" id="control-views">0</span>
+              <span class="metric-label">Views</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="control-completions">0</span>
+              <span class="metric-label">Completions</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="control-interactions">0</span>
+              <span class="metric-label">Interactions</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="control-conversions">0</span>
+              <span class="metric-label">Conversions</span>
+            </div>
+          </div>
+          <div style="margin-top: 1rem; text-align: center">
+            <strong>Conversion Rate: <span id="control-rate">0%</span></strong>
+          </div>
+        </div>
+
+        <!-- Interactive Video -->
+        <div class="test-section">
+          <h2>🎬 Enhanced video with clickable Cloudinary hotspots</h2>
+          <div class="video-container" id="interactive-container">
+            <video
+              id="interactive-video"
+              controls
+              muted
+              class="cld-video-player"
+            ></video>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-value" id="interactive-views">0</span>
+              <span class="metric-label">Views</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="interactive-completions">0</span>
+              <span class="metric-label">Completions</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="interactive-interactions">0</span>
+              <span class="metric-label">Interactions</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="interactive-conversions">0</span>
+              <span class="metric-label">Conversions</span>
+            </div>
+          </div>
+          <div style="margin-top: 1rem; text-align: center">
+            <strong
+              >Conversion Rate: <span id="interactive-rate">0%</span></strong
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conversion Alert -->
+    <div class="conversion-alert" id="conversion-alert">
+      🎯 Conversion! User interacted and purchased
+    </div>
+
+    <!-- Cloudinary Scripts -->
+    <script src="https://unpkg.com/cloudinary-core@2.13.0/cloudinary-core-shrinkwrap.min.js"></script>
+    <script src="https://unpkg.com/cloudinary-video-player@1.10.6/dist/cld-video-player.min.js"></script>
+    <script src="https://unpkg.com/cloudinary-video-player@1.10.6/interaction-areas"></script>
+
+    <!-- External JavaScript -->
+    <script src="app.js"></script>
+  </body>
+</html>
